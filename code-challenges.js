@@ -14,11 +14,18 @@ const bootAndShuffle = (arr) => {
         return "The array is empty."
     } else {
     // Getting rid of the inital value in the array.
-    arr.shift()
-    // Older sort method to randomize. Will work with smaller arrays but isnt optimal. I tried the Fisher-Yates Algorithm but wasn't able to get it working.
-    return arr.sort(function (a, b) { return Math.random() - 0.5})
+        arr.shift()
+    // Fisher-Yates Algorithm for sorting the array randomly. Switches indexes around. 
+        for (var i = arr.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+        return arr
     }
 }
+
 
 console.log(bootAndShuffle(collections));
 console.log(bootAndShuffle(collections));
